@@ -1,15 +1,10 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-import json
 
 app = Flask(__name__)
 CORS(app)
 
-
-@app.route('/')
-def index():
-    print('gottem')
-    x = [
+x = [
         {'id': 10, 'name': 'Madelaine Vill Jeaxgreen'},
         {'id': 11, 'name': 'Felosial Tinleaf'},
         {'id': 12, 'name': 'Byreth Gammidge'},
@@ -32,7 +27,18 @@ def index():
         {'id': 28, 'name': 'Chaograth Baedrin'},
         {'id': 29, 'name': 'Hylia'}
     ]
+
+
+@app.route('/')
+def index():
     return jsonify(x)
+
+
+@app.route('/<hero_id>')
+def get_hero(hero_id):
+    for hero in x:
+        if hero['id'] == int(hero_id):
+            return jsonify(hero)
 
 
 if __name__ == '__main__':
