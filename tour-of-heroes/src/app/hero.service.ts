@@ -16,7 +16,7 @@ export class HeroService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   }
-  private heroesUrl = 'api/heroes';
+  private heroesUrl = 'http://localhost:5000';
 
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);
